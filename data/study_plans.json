@@ -1,0 +1,17 @@
+{
+  "studyPlans": [
+    {
+      "title": "hello",
+      "subject": "sci",
+      "description": "abcd",
+      "startDate": "2025-06-30T11:26:21.604Z",
+      "endDate": "2025-06-30T11:26:21.604Z",
+      "tasks": [],
+      "priority": "medium",
+      "estimatedHours": 0,
+      "userId": "1751282762041",
+      "id": "1751282792316",
+      "createdAt": "2025-06-30T11:26:32.317Z"
+    }
+  ]
+}

@@ -1,0 +1,420 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Custom button styles for consistent cartoon theme */
+  .btn-cartoon {
+    @apply px-6 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-purple-600 border-2 border-purple-300 hover:bg-purple-50;
+  }
+
+  /* Card styles */
+  .card-cartoon {
+    @apply bg-white rounded-3xl p-6 shadow-lg border-4 border-purple-200 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  /* Input styles */
+  .input-cartoon {
+    @apply w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors duration-200;
+  }
+
+  /* Chat Interface Styles */
+  .chat-message {
+    @apply transition-all duration-200;
+  }
+
+  .chat-message:hover {
+    @apply transform scale-[1.02];
+  }
+
+  /* Markdown Styles */
+  .prose {
+    @apply text-gray-800 leading-relaxed;
+  }
+
+  .prose h1 {
+    @apply text-2xl font-bold text-gray-800 mt-6 mb-4 border-b border-gray-200 pb-2;
+  }
+
+  .prose h2 {
+    @apply text-xl font-bold text-gray-800 mt-6 mb-3;
+  }
+
+  .prose h3 {
+    @apply text-lg font-bold text-gray-800 mt-4 mb-2;
+  }
+
+  .prose p {
+    @apply mb-3 leading-relaxed;
+  }
+
+  .prose strong {
+    @apply font-bold text-gray-900;
+  }
+
+  .prose em {
+    @apply italic text-gray-700;
+  }
+
+  .prose code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono text-purple-700;
+  }
+
+  .prose a {
+    @apply text-blue-600 hover:text-blue-800 underline transition-colors duration-200;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside mb-4 space-y-1;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside mb-4 space-y-1;
+  }
+
+  .prose li {
+    @apply mb-1;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-purple-300 pl-4 italic text-gray-600 my-4;
+  }
+
+  /* Code Block Styles */
+  .code-block {
+    @apply my-4 bg-gray-900 rounded-lg overflow-hidden shadow-lg;
+  }
+
+  .code-block-header {
+    @apply flex items-center justify-between bg-gray-800 px-4 py-2;
+  }
+
+  .code-block-content {
+    @apply p-4 overflow-x-auto;
+  }
+
+  .code-block-content code {
+    @apply text-green-400 font-mono text-sm leading-relaxed;
+  }
+
+  /* Loading Animation */
+  .loading-dots {
+    @apply flex space-x-2;
+  }
+
+  .loading-dots > div {
+    @apply w-3 h-3 bg-purple-500 rounded-full animate-bounce;
+  }
+
+  .loading-dots > div:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .loading-dots > div:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-purple-300 rounded-full hover:bg-purple-400;
+  }
+
+  /* Chat scrollbar */
+  .chat-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400;
+  }
+}
+
+/* Ensure smooth animations on mobile */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Calendar Styles */
+.calendar-container {
+  position: relative;
+  width: 100%;
+}
+
+.calendar-container .rdp {
+  --rdp-cell-size: 32px;
+  --rdp-accent-color: #8b5cf6;
+  --rdp-background-color: #f3f4f6;
+  margin: 0;
+}
+
+.calendar-container .rdp-months {
+  width: 100%;
+}
+
+.calendar-container .rdp-month {
+  width: 100%;
+}
+
+.calendar-container .rdp-nav {
+  position: relative;
+  z-index: 1;
+}
+
+.calendar-container .rdp-nav_button {
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-container .rdp-button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.calendar-container .rdp-day {
+  width: var(--rdp-cell-size);
+  height: var(--rdp-cell-size);
+  font-size: 0.875rem;
+}
+
+.calendar-container .rdp-dropdown {
+  position: absolute;
+  z-index: 2;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.calendar-container .rdp-dropdown_month,
+.calendar-container .rdp-dropdown_year {
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.calendar-container .rdp-dropdown_month:hover,
+.calendar-container .rdp-dropdown_year:hover {
+  background-color: #f3f4f6;
+}
+
+.calendar-container .rdp-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-container .rdp-caption_label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.calendar-container .rdp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-container .rdp-tbody {
+  width: 100%;
+}
+
+.calendar-container .rdp-tr {
+  width: 100%;
+}
+
+.calendar-container .rdp-td {
+  width: var(--rdp-cell-size);
+  height: var(--rdp-cell-size);
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.calendar-container .rdp-button:hover {
+  background-color: var(--rdp-background-color);
+  border-radius: 50%;
+}
+
+.calendar-container .rdp-button[aria-selected="true"] {
+  background-color: var(--rdp-accent-color);
+  color: white;
+  border-radius: 50%;
+}
+
+.calendar-container .rdp-button[aria-selected="true"]:hover {
+  background-color: #7c3aed;
+}
+
+.calendar-container .rdp-button[aria-selected="true"]:focus {
+  background-color: #7c3aed;
+}
+
+.calendar-container .rdp-button:focus {
+  outline: 2px solid var(--rdp-accent-color);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.calendar-container .rdp-button[disabled] {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.calendar-container .rdp-button[disabled]:hover {
+  background-color: transparent;
+}
+
+.calendar-container .rdp-head_cell {
+  width: var(--rdp-cell-size);
+  height: 32px;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.calendar-container .rdp-head_row {
+  width: 100%;
+}
+
+.calendar-container .rdp-head {
+  width: 100%;
+}
+
+.calendar-container .rdp-head_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-container .rdp-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-container .rdp-caption_label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #374151;
+}
