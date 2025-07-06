@@ -24,6 +24,7 @@ export default function QuizPage() {
   const [timePerQuestion, setTimePerQuestion] = useState('60')
   const [timeLeft, setTimeLeft] = useState(60)
   const [isTimerRunning, setIsTimerRunning] = useState(false)
+  const [showDownloadOptions, setShowDownloadOptions] = useState(false)
   const resultRef = useRef(null)
 
   // Timer effect
@@ -214,8 +215,7 @@ export default function QuizPage() {
         const quizWithCount = generateQuizWithCount(sampleQuiz, questionCount)
         setQuizData(quizWithCount)
       }
-      // Start timer for the first question
-      startTimer()
+      setShowDownloadOptions(true)
     } catch (error) {
       console.error('Quiz generation error:', error);
       toast.error(error.message || 'Failed to generate quiz. Please try again.');
@@ -281,6 +281,7 @@ export default function QuizPage() {
     setIsAnswered(false)
     setScore(0)
     setShowResults(false)
+    setShowDownloadOptions(false)
     setQuizData(null)
     setCustomContent('')
     setUseCustomContent(false)
@@ -571,7 +572,7 @@ export default function QuizPage() {
     )
   }
 
-  if (quizData && currentQuestion === 0 && !isAnswered && !showResults) {
+  if (quizData && showDownloadOptions && !showResults) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
         {/* Header */}
@@ -619,7 +620,15 @@ export default function QuizPage() {
                   </button>
                 </div>
                 <button
-                  onClick={startTimer}
+                  onClick={() => {
+                    setShowDownloadOptions(false)
+                    startTimer()
+                    setCurrentQuestion(0)
+                    setSelectedAnswer(null)
+                    setIsAnswered(false)
+                    setScore(0)
+                    setShowResults(false)
+                  }}
                   className="mt-8 w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-5 rounded-xl font-semibold text-lg hover:from-orange-600 hover:to-red-600 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center space-x-3"
                 >
                   <Brain className="h-6 w-6" />
