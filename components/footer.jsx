@@ -71,7 +71,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-purple-600 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-purple-100 text-sm flex items-center">
-            © 2025 ANNOVEX PVT. LTD. All rights reserved.
+            © 2025 All rights reserved.
           </p>
           <p className="text-purple-100 text-sm mt-2 sm:mt-0">Empowering education through AI ✨</p>
         </div>
