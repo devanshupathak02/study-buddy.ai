@@ -9,8 +9,8 @@ export default function Footer() {
       { name: "About Us", href: "#" },
     ],
     Contact: [
-      { name: "info@annovextechnologies.com", href: "mailto:info@annovextechnologies.com", icon: Mail },
-      { name: "011-46797703", href: "tel:01146797703", icon: Phone },
+      { name: "devapathak06@gmail.com", href: "mailto:devapathak06@gmail.com", icon: Mail },
+      { name: "6395628610", href: "tel:6395628610", icon: Phone },
       { name: "Mathura, India", href: "#", icon: MapPin },
     ],
   }
